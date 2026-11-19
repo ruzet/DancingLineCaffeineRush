@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="DancingLineCaffeineRush"
+run/main_scene="uid://de0xiiyxx4sn5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +28,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/spaces_uploads/plugin.cfg")
+
+[global_group]
+
+Floor="Line allowed on floor, dies when hits walls"
 
 [physics]
 
