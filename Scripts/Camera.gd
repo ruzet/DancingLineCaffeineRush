@@ -1,15 +1,17 @@
 extends Camera3D
 
-@onready var Head: Area3D = $"../LineController/Head"
+@onready var Head: CharacterBody3D = $"../LineController/Head"
 
-var Position = Vector3(1, 1, 1)
-var Distance = 10
+var Position = Vector3(0.5, 0.5, 0.5)
+var Distance = 30
 var Following = true
 
 func _process(Delta: float) -> void:
 	if Following:
-		print((global_position - Head.global_position))
-		global_rotation_degrees = (global_position - Head.global_position).normalized().abs()
-		global_position = global_position.lerp(Head.global_position + (position * Distance), 5 * Delta)
+		var Direction = global_position.direction_to(Head.global_position)
+		var Target = Basis.looking_at(Direction)
+		
+		basis = basis.slerp(Target, 0.35)
+		global_position = global_position.lerp(Head.global_position + (Position * Distance), 5 * Delta)
 	else:
 		pass

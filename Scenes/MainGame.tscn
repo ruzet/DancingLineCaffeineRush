@@ -21,10 +21,15 @@ albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
 material = SubResource("StandardMaterial3D_m8qwt")
 size = Vector3(100, 1, 100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_pa3pj"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_frf35"]
+data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m8qwt"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frf35"]
+albedo_color = Color(1, 0.6509804, 0.21568628, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_frf35"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pa3pj"]
 
 [node name="MainGame" type="Node3D" unique_id=2007180522]
 
@@ -39,18 +44,25 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, -0.100000024, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("BoxMesh_m8qwt")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=201900612]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=847400536]
+shape = SubResource("ConcavePolygonShape3D_frf35")
+
 [node name="LineController" type="Node3D" parent="." unique_id=921193064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4458661, 0)
 script = ExtResource("1_8etcy")
+LineMaterial = SubResource("StandardMaterial3D_frf35")
 
 [node name="TrailContainer" type="Node" parent="LineController" unique_id=935175518]
 
-[node name="Head" type="Area3D" parent="LineController" unique_id=1721630486]
+[node name="Head" type="CharacterBody3D" parent="LineController" unique_id=1649559215]
+
+[node name="Collision" type="CollisionShape3D" parent="LineController/Head" unique_id=771925720]
+shape = SubResource("BoxShape3D_frf35")
 
 [node name="Mesh" type="MeshInstance3D" parent="LineController/Head" unique_id=1345648250]
 mesh = SubResource("BoxMesh_pa3pj")
-
-[node name="Collision" type="CollisionShape3D" parent="LineController/Head" unique_id=967284876]
-shape = SubResource("ConcavePolygonShape3D_m8qwt")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1927240764]
 transform = Transform3D(0.47484425, 0, -0.88006985, 0, 1, 0, 0.88006985, 0, 0.47484425, -8.204276, 3.117916, 0)
