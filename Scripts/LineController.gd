@@ -4,8 +4,9 @@ extends Node3D
 @export var Gravity = 10
 @export var LineMaterial: StandardMaterial3D
 
-@onready var Head = $Head
-@onready var TrailContainer = $TrailContainer
+@onready var Head = $"Head"
+@onready var TrailContainer = $"TrailContainer"
+@onready var UI = $"../UI/Root"
 
 var MainDirection = Vector3.FORWARD
 var CurrentDirection = Vector3.FORWARD
@@ -14,7 +15,7 @@ var TurnStartPosition: Vector3
 var LeftTurn = true
 var Turned = false
 var CanTurn = true
-var Moving = true
+var Moving = false
 var Grounded = false
 
 func _physics_process(Delta: float) -> void:
@@ -31,9 +32,16 @@ func _physics_process(Delta: float) -> void:
 		Head.velocity.y -= Gravity * Delta
 	Head.move_and_slide()
 	
-func _input(Event: InputEvent) -> void: if Event.is_action_pressed("Turn"): Turn()
+func _input(Event: InputEvent) -> void: 
+	if Event.is_action_pressed("Turn"):
+		if UI.Ready == true:
+			if !Moving: Ready() 
+			else: Turn()
+		else:
+			UI.Ready = true
+			UI.HideUI()
 
-func _ready() -> void:
+func Ready():
 	if Head.is_on_floor(): _SpawnNewSegment()
 	Moving = true
 
