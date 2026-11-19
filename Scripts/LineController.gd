@@ -22,9 +22,13 @@ func _physics_process(Delta: float) -> void:
 	Head.find_child("Mesh").material_override = LineMaterial
 	if !Moving: return
 	Head.global_position += CurrentDirection * LineSpeed * Delta
+	
+	if !Grounded && Head.is_on_floor(): Landed()
+	Grounded = Head.is_on_floor()
+	
 	if Head.is_on_floor():
 		Head.velocity.y = 0
-		if not CurrentSegment:
+		if !CurrentSegment:
 			_SpawnNewSegment()
 		else:
 			_UpdateCurrentSegment()
@@ -44,6 +48,10 @@ func _input(Event: InputEvent) -> void:
 func Ready():
 	if Head.is_on_floor(): _SpawnNewSegment()
 	Moving = true
+	
+func Landed(): 
+	TurnStartPosition = Head.global_position
+	_SpawnNewSegment()
 
 func Turn():
 	if !CanTurn || !Moving || !Head.is_on_floor(): return
