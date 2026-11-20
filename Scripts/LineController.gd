@@ -2,7 +2,7 @@ extends Node3D
 
 @export var LineSpeed = 7
 @export var Gravity = 10
-@export var RecordPath = true
+@export var RecordPath = false
 @export var LineMaterial: StandardMaterial3D
 
 @onready var Head: CharacterBody3D = $"Head"
@@ -58,7 +58,7 @@ func Ready():
 	AudioPlayer.play()
 	if RecordPath:
 		RecordedCurve = Curve3D.new()
-		RecordedCurve.add_point(Head.global_position)
+		RecordedCurve.add_point(_GetHeadPointPosition())
 	Moving = true
 	
 func Landed(): 
@@ -74,7 +74,7 @@ func Turn():
 	else:
 		CurrentDirection = CurrentDirection.rotated(Vector3.UP, deg_to_rad(-90 if LeftTurn else 90))
 	Turned = !Turned
-	if RecordPath && RecordedCurve: RecordedCurve.add_point(TurnStartPosition)
+	if RecordPath && RecordedCurve: RecordedCurve.add_point(_GetHeadPointPosition())
 	_SpawnNewSegment()
 
 func _SpawnNewSegment():
@@ -88,12 +88,14 @@ func _SpawnNewSegment():
 	
 func _SaveRecordedPath():
 	if !RecordedCurve: return
-	RecordedCurve.add_point(Head.global_position)
+	RecordedCurve.add_point(_GetHeadPointPosition())
 	var SaveError = ResourceSaver.save(RecordedCurve, "res://Assets/RecordedCurve.tres")
 	if SaveError == OK:
 		print("saved correctly")
 	else:
 		print("error: " + SaveError)
+		
+func _GetHeadPointPosition(): return Vector3(snapped(Head.global_position.x, 0.01), 0, snapped(Head.global_position.z, 0.01))
 
 func _UpdateCurrentSegment():
 	if not CurrentSegment: return
