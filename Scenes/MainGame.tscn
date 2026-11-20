@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c84feurcadj3d" path="res://Scripts/UI.gd" id="3_ybmw1"]
 [ext_resource type="FontFile" uid="uid://d23nvciu1ppwn" path="res://Assets/CaviarDreams.ttf" id="3_yprpe"]
 [ext_resource type="Curve3D" uid="uid://boaxwots5er3b" path="res://Assets/RecordedCurve.tres" id="5_321ql"]
+[ext_resource type="Script" uid="uid://bwpn5d2jpx1tw" path="res://Scripts/CreateTrack.gd" id="6_d4f28"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8etcy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -17,22 +18,84 @@ sky_material = SubResource("ProceduralSkyMaterial_8etcy")
 background_mode = 2
 sky = SubResource("Sky_frf35")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8qwt"]
-albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_m8qwt"]
-material = SubResource("StandardMaterial3D_m8qwt")
-size = Vector3(20, 1, 50)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ybmw1"]
-points = PackedVector3Array(10, 0.5, 25, 10, -0.5, 25, 10, 0.5, -25, -10, 0.5, 25, -10, -0.5, 25, 10, -0.5, -25, -10, 0.5, -25, -10, -0.5, -25)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frf35"]
 albedo_color = Color(1, 0.6509804, 0.21568628, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_frf35"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pa3pj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4f28"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d4f28"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 12.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuea6"]
+size = Vector3(4, 2, 12.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kvfik"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 6.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bmkb"]
+size = Vector3(4, 2, 6.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_48eim"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 5.870001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73a8k"]
+size = Vector3(4, 2, 5.870001)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q8sds"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 24.53)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yr2pg"]
+size = Vector3(4, 2, 24.53)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ylpyt"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 5.8599997)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyocf"]
+size = Vector3(4, 2, 5.8599997)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktwve"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 7.74)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5sjn"]
+size = Vector3(4, 2, 7.74)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yc6xl"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 10.54)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k6vqf"]
+size = Vector3(4, 2, 10.54)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ev6kq"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 5.8600006)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jn25s"]
+size = Vector3(4, 2, 5.8600006)
+
+[sub_resource type="BoxMesh" id="BoxMesh_glaac"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 9.129999)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7p2u3"]
+size = Vector3(4, 2, 9.129999)
+
+[sub_resource type="BoxMesh" id="BoxMesh_him8o"]
+material = SubResource("StandardMaterial3D_d4f28")
+size = Vector3(4, 2, 28.970001)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgk2h"]
+size = Vector3(4, 2, 28.970001)
 
 [node name="MainGame" type="Node3D" unique_id=2007180522]
 
@@ -42,24 +105,6 @@ environment = SubResource("Environment_yprpe")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1614720207]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
-
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=31967997 groups=["Floor"]]
-transform = Transform3D(1, 0, 0, 0, -0.100000024, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("BoxMesh_m8qwt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=623978156]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=628027530]
-shape = SubResource("ConvexPolygonShape3D_ybmw1")
-
-[node name="Floor2" type="MeshInstance3D" parent="." unique_id=1623481926 groups=["Floor"]]
-transform = Transform3D(1, 0, 0, 0, -0.100000024, 0, 0, 0, 1, -20.668447, -7.673294, 0)
-mesh = SubResource("BoxMesh_m8qwt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor2" unique_id=970473158]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2/StaticBody3D" unique_id=1054641491]
-shape = SubResource("ConvexPolygonShape3D_ybmw1")
 
 [node name="LineController" type="Node3D" parent="." unique_id=921193064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4458661, 0)
@@ -139,9 +184,102 @@ text = "Tap to play"
 horizontal_alignment = 1
 
 [node name="LevelTrack" type="Path3D" parent="." unique_id=1442548719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.460803, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2350695, 0)
 curve = ExtResource("5_321ql")
+script = ExtResource("6_d4f28")
+TrackMaterial = SubResource("StandardMaterial3D_d4f28")
+DeleteAll = true
 
 [node name="MeshHolder" type="Node3D" parent="LevelTrack" unique_id=1506806202]
+
+[node name="TrackPart0" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=2078664742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4.2)
+
+[node name="@MeshInstance3D@21222" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart0" unique_id=1311920373]
+mesh = SubResource("BoxMesh_d4f28")
+
+[node name="@CollisionShape3D@21223" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart0" unique_id=919700588]
+shape = SubResource("BoxShape3D_iuea6")
+
+[node name="TrackPart1" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=1655613451]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.4, -1, -8.4)
+
+[node name="@MeshInstance3D@21224" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart1" unique_id=410390883]
+mesh = SubResource("BoxMesh_kvfik")
+
+[node name="@CollisionShape3D@21225" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart1" unique_id=2012784987]
+shape = SubResource("BoxShape3D_3bmkb")
+
+[node name="TrackPart2" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=2127430913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, -1, -9.335)
+
+[node name="@MeshInstance3D@21226" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart2" unique_id=703910782]
+mesh = SubResource("BoxMesh_48eim")
+
+[node name="@CollisionShape3D@21227" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart2" unique_id=1481933658]
+shape = SubResource("BoxShape3D_73a8k")
+
+[node name="TrackPart3" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=510296277]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.065, -1, -10.27)
+
+[node name="@MeshInstance3D@21228" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart3" unique_id=493386531]
+mesh = SubResource("BoxMesh_q8sds")
+
+[node name="@CollisionShape3D@21229" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart3" unique_id=2131807967]
+shape = SubResource("BoxShape3D_yr2pg")
+
+[node name="TrackPart4" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=1814696039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.33, -1, -11.200001)
+
+[node name="@MeshInstance3D@21230" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart4" unique_id=1258697506]
+mesh = SubResource("BoxMesh_ylpyt")
+
+[node name="@CollisionShape3D@21231" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart4" unique_id=1948014758]
+shape = SubResource("BoxShape3D_wyocf")
+
+[node name="TrackPart5" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=1716881273]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.2, -1, -12.13)
+
+[node name="@MeshInstance3D@21232" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart5" unique_id=1004937812]
+mesh = SubResource("BoxMesh_ktwve")
+
+[node name="@CollisionShape3D@21233" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart5" unique_id=1731759315]
+shape = SubResource("BoxShape3D_r5sjn")
+
+[node name="TrackPart6" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=657316670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.07, -1, -15.4)
+
+[node name="@MeshInstance3D@21234" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart6" unique_id=1850327541]
+mesh = SubResource("BoxMesh_yc6xl")
+
+[node name="@CollisionShape3D@21235" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart6" unique_id=1210248978]
+shape = SubResource("BoxShape3D_k6vqf")
+
+[node name="TrackPart7" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=1995279217]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28, -1, -18.67)
+
+[node name="@MeshInstance3D@21236" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart7" unique_id=1007818604]
+mesh = SubResource("BoxMesh_ev6kq")
+
+[node name="@CollisionShape3D@21237" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart7" unique_id=399403620]
+shape = SubResource("BoxShape3D_jn25s")
+
+[node name="TrackPart8" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=371185604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.93, -1, -21.235)
+
+[node name="@MeshInstance3D@21238" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart8" unique_id=1879433594]
+mesh = SubResource("BoxMesh_glaac")
+
+[node name="@CollisionShape3D@21239" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart8" unique_id=474526515]
+shape = SubResource("BoxShape3D_7p2u3")
+
+[node name="TrackPart9" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=2043483889]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -41.415, -1, -23.8)
+
+[node name="@MeshInstance3D@21240" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart9" unique_id=826770391]
+mesh = SubResource("BoxMesh_him8o")
+
+[node name="@CollisionShape3D@21241" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart9" unique_id=1760444148]
+shape = SubResource("BoxShape3D_fgk2h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=102689376]
