@@ -12,6 +12,6 @@ func _process(Delta: float) -> void:
 		var Target = Basis.looking_at(Direction)
 		
 		basis = basis.slerp(Target, 0.35)
-		global_position = global_position.lerp(Head.global_position + (Position * Distance), 5 * Delta)
+		global_position = global_position.lerp(Head.global_position + (Position * Distance), Delta)
 	else:
 		pass

@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var LineSpeed = 7
+@export var LineSpeed = 20
 @export var Gravity = 10
 @export var RecordPath = false
 @export var LineMaterial: StandardMaterial3D
@@ -36,7 +36,7 @@ func _physics_process(Delta: float) -> void:
 		else:
 			_UpdateCurrentSegment()
 	else:
-		Head.velocity.y -= Gravity * Delta
+		if !RecordPath: Head.velocity.y -= Gravity * Delta
 	Head.move_and_slide()
 	
 func _input(Event: InputEvent) -> void: 
@@ -66,7 +66,7 @@ func Landed():
 	_SpawnNewSegment()
 
 func Turn():
-	if !CanTurn || !Moving || !Head.is_on_floor(): return
+	if !RecordPath: if !CanTurn || !Moving || !Head.is_on_floor(): return
 	_UpdateCurrentSegment()
 	TurnStartPosition = Head.global_position
 	if !Turned:

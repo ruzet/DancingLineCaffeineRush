@@ -1,8 +1,8 @@
 @tool
 extends Path3D
 
-@export var TrackWidth = 4
-@export var TrackHeight = 2
+@export var TrackWidth = 4.0
+@export var TrackHeight = 2.0
 @export var TrackMaterial: StandardMaterial3D
 @export var DeleteAll = false
 @export var Rebuild = false: 
