@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b3xh13e7f7m7u"
-path="res://.godot/imported/caffeinerush.wav-983d716ffeba4a52b4148e0bc0ab8457.sample"
+path="res://.godot/imported/caffeinerush.wav-2534d0d9fd55e8a5c12d93dfc6ccd3c0.sample"
 
 [deps]
 
-source_file="res://Scenes/caffeinerush.wav"
-dest_files=["res://.godot/imported/caffeinerush.wav-983d716ffeba4a52b4148e0bc0ab8457.sample"]
+source_file="res://Assets/caffeinerush.wav"
+dest_files=["res://.godot/imported/caffeinerush.wav-2534d0d9fd55e8a5c12d93dfc6ccd3c0.sample"]
 
 [params]
 

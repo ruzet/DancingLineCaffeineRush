@@ -2,16 +2,19 @@ extends Node3D
 
 @export var LineSpeed = 7
 @export var Gravity = 10
+@export var RecordPath = true
 @export var LineMaterial: StandardMaterial3D
 
-@onready var Head = $"Head"
-@onready var TrailContainer = $"TrailContainer"
-@onready var UI = $"../UI/Root"
+@onready var Head: CharacterBody3D = $"Head"
+@onready var TrailContainer: Node = $"TrailContainer"
+@onready var AudioPlayer: AudioStreamPlayer = $"../AudioStreamPlayer"
+@onready var UI: Control = $"../UI/Root"
 
 var MainDirection = Vector3.FORWARD
 var CurrentDirection = Vector3.FORWARD
-var CurrentSegment: MeshInstance3D
 var TurnStartPosition: Vector3
+var CurrentSegment: MeshInstance3D
+var RecordedCurve: Curve3D
 var LeftTurn = true
 var Turned = false
 var CanTurn = true
@@ -38,15 +41,24 @@ func _physics_process(Delta: float) -> void:
 	
 func _input(Event: InputEvent) -> void: 
 	if Event.is_action_pressed("Turn"):
-		if UI.Ready == true:
+		if UI.Ready:
 			if !Moving: Ready() 
 			else: Turn()
 		else:
 			UI.Ready = true
 			UI.HideUI()
+	elif Event.is_action_pressed("ui_text_newline") && RecordPath:
+		_SaveRecordedPath()
+			
+func _ready() -> void: AudioPlayer.stream = preload("res://Assets/caffeinerush.wav")
 
 func Ready():
+	AudioPlayer.play()
 	if Head.is_on_floor(): _SpawnNewSegment()
+	AudioPlayer.play()
+	if RecordPath:
+		RecordedCurve = Curve3D.new()
+		RecordedCurve.add_point(Head.global_position)
 	Moving = true
 	
 func Landed(): 
@@ -62,6 +74,7 @@ func Turn():
 	else:
 		CurrentDirection = CurrentDirection.rotated(Vector3.UP, deg_to_rad(-90 if LeftTurn else 90))
 	Turned = !Turned
+	if RecordPath && RecordedCurve: RecordedCurve.add_point(TurnStartPosition)
 	_SpawnNewSegment()
 
 func _SpawnNewSegment():
@@ -72,6 +85,15 @@ func _SpawnNewSegment():
 	if LineMaterial: CurrentSegment.material_override = LineMaterial
 	TrailContainer.add_child(CurrentSegment)
 	CurrentSegment.global_position = TurnStartPosition
+	
+func _SaveRecordedPath():
+	if !RecordedCurve: return
+	RecordedCurve.add_point(Head.global_position)
+	var SaveError = ResourceSaver.save(RecordedCurve, "res://Assets/RecordedCurve.tres")
+	if SaveError == OK:
+		print("saved correctly")
+	else:
+		print("error: " + SaveError)
 
 func _UpdateCurrentSegment():
 	if not CurrentSegment: return

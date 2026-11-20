@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cf1s0s68vyb81" path="res://Scripts/LineController.gd" id="1_8etcy"]
 [ext_resource type="Script" uid="uid://c4ht7riwtlkni" path="res://Scripts/Camera.gd" id="2_frf35"]
 [ext_resource type="Script" uid="uid://c84feurcadj3d" path="res://Scripts/UI.gd" id="3_ybmw1"]
-[ext_resource type="FontFile" uid="uid://d23nvciu1ppwn" path="res://CaviarDreams.ttf" id="3_yprpe"]
-[ext_resource type="Script" uid="uid://d4hmj6ib3v2mo" path="res://Scripts/GenerateTrack.gd" id="5_321ql"]
+[ext_resource type="FontFile" uid="uid://d23nvciu1ppwn" path="res://Assets/CaviarDreams.ttf" id="3_yprpe"]
+[ext_resource type="Curve3D" uid="uid://c35syqa4wggws" path="res://Assets/RecordedCurve.tres" id="5_321ql"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8etcy"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -34,7 +34,19 @@ albedo_color = Color(1, 0.6509804, 0.21568628, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pa3pj"]
 
-[sub_resource type="Curve3D" id="Curve3D_ybmw1"]
+[sub_resource type="GDScript" id="GDScript_ybmw1"]
+script/source = "extends Path3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="MainGame" type="Node3D" unique_id=2007180522]
 
@@ -142,10 +154,22 @@ horizontal_alignment = 1
 
 [node name="LevelTrack" type="Path3D" parent="." unique_id=1442548719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2855563, 0)
-curve = SubResource("Curve3D_ybmw1")
-script = ExtResource("5_321ql")
+curve = ExtResource("5_321ql")
+script = SubResource("GDScript_ybmw1")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelTrack" unique_id=1112342174]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.1027617, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1027617, 0)
 use_collision = true
-depth = 39.14
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=102689376]
