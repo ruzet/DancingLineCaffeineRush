@@ -5,13 +5,8 @@ extends Path3D
 @export var TrackHeight = 2.0
 @export var TrackMaterial: StandardMaterial3D
 @export var DeleteAll = false
-@export var Rebuild = false: 
-	set(value): 
-		if value:
-			BuildTrack()
-			Rebuild = false
-
 @onready var MeshHolder = $"MeshHolder"
+@export_tool_button("Create Track") var CreateTrack = BuildTrack
 
 func BuildTrack():
 	if !curve: return

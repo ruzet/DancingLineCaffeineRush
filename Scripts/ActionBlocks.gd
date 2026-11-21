@@ -16,6 +16,10 @@ func _OnBlockTouched(Head: Node, Block: ActionBlock):
 			Camera.TweenCamera(Block.Position, Block.Distance, Block.CameraDuration)
 		elif Block.BlockType == 1: # Jump Pad
 			Head.velocity.y = Block.JumpPower
+		elif Block.BlockType == 2: # Line Color
+			_LineColorChange(Head, Block.LineColor, Block.ColorDuration)
+		elif Block.BlockType == 3: # Death
+			Head.get_parent().Reset()
 		elif Block.BlockType == 4: # Open Pyramid:
 			_OpenPyramid()
 		elif Block.BlockType == 5: # End Game:
@@ -27,8 +31,7 @@ func _LineColorChange(Head: CharacterBody3D, NewColor: Color, Duration: float):
 	var LineController = Head.get_parent()
 	var LineMaterial = LineController.LineMaterial
 	var NewTween = create_tween()
-	NewTween.set_trans(Tween.TRANS_QUAD)
-	NewTween.set_ease(Tween.EASE_OUT)
+	NewTween.set_trans(Tween.TRANS_LINEAR)
 
 	NewTween.tween_property(LineMaterial, "albedo_color", NewColor, Duration)
 	NewTween.play()
@@ -37,7 +40,7 @@ func _OpenPyramid():
 	var Pyramid1 = $"../Pyramid1"
 	var Pyramid2 = $"../Pyramid2"
 	var NewTween = create_tween()
-	NewTween.set_trans(Tween.TRANS_QUAD)
+	NewTween.set_trans(Tween.TRANS_SINE)
 	NewTween.set_ease(Tween.EASE_OUT)
 	NewTween.set_parallel(true)
 

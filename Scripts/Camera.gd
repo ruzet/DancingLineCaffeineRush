@@ -16,7 +16,7 @@ func _process(Delta: float) -> void:
 func TweenCamera(NewPosition: Vector3, NewDistance: float, Duration: float):
 	var NewTween = create_tween()
 	NewTween.set_trans(Tween.TRANS_QUAD)
-	NewTween.set_ease(Tween.EASE_OUT)
+	NewTween.set_ease(Tween.EASE_IN_OUT)
 	NewTween.set_parallel(true)
 	if NewPosition: NewTween.tween_property(self, "Position", NewPosition, Duration)
 	if NewDistance: NewTween.tween_property(self, "Distance", NewDistance, Duration)
