@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3lhxijfj4feo" path="res://Scenes/ActionBlock.tscn" id="4_3bmkb"]
 [ext_resource type="Curve3D" uid="uid://bbyri576cp0ua" path="res://Assets/RecordedCurve.tres" id="5_321ql"]
 [ext_resource type="Script" uid="uid://bwpn5d2jpx1tw" path="res://Scripts/CreateTrack.gd" id="6_d4f28"]
+[ext_resource type="AudioStream" uid="uid://b3xh13e7f7m7u" path="res://Assets/caffeinerush.wav" id="10_48eim"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qt2xt"]
 panorama = ExtResource("1_iuea6")
@@ -3350,17 +3351,146 @@ size = Vector3(4, 2, 7.339966)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rusf6"]
 material = SubResource("StandardMaterial3D_d4f28")
-size = Vector3(4, 2, 111.67993)
+size = Vector3(4, 2, 228)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rw63d"]
-size = Vector3(4, 2, 111.67993)
+size = Vector3(4, 2, 228)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4dkp5"]
-material = SubResource("StandardMaterial3D_d4f28")
-size = Vector3(4, 2, 11.330078)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73a8k"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rw81w"]
-size = Vector3(4, 2, 11.330078)
+[sub_resource type="ArrayMesh" id="ArrayMesh_bg5as"]
+_surfaces = [{
+"aabb": AABB(-20, -20, 0, 40, 20.001999, 39.998),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Turquoise",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 128, 255, 255, 255, 255, 0, 0)
+}, {
+"aabb": AABB(-20, -20, 0, 40, 40, 1e-05),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Purple",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-20, -20, 0, 20.001999, 40, 39.998),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Green",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 2, 128, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(0.001999, -20, 0, 19.998001, 40, 39.998),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Yellow",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 2, 128, 255, 255, 0, 0)
+}, {
+"aabb": AABB(-20, 0.001999, 0, 40, 19.998001, 39.998),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Red",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 2, 128, 0, 0, 255, 255, 0, 0)
+}, {
+"aabb": AABB(-20, -20, 0, 40, 40, 1e-05),
+"format": 34896613377,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"name": "Purple",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3bmkb"]
+_surfaces = [{
+"aabb": AABB(-20, -20, 0, 40, 20.001999, 39.998),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Turquoise",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 26, 173, 0, 0, 0, 0, 0, 0, 26, 173, 2, 128, 255, 255, 255, 255, 26, 173, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}, {
+"aabb": AABB(-20, -20, 0, 40, 40, 1e-05),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Purple",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}, {
+"aabb": AABB(-20, -20, 0, 20.001999, 40, 39.998),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Green",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 2, 128, 255, 255, 8, 159, 0, 0, 0, 0, 0, 0, 8, 159, 0, 0, 255, 255, 0, 0, 8, 159, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}, {
+"aabb": AABB(0.001999, -20, 0, 19.998001, 40, 39.998),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Yellow",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 0, 0, 9, 159, 255, 255, 0, 0, 0, 0, 9, 159, 0, 0, 2, 128, 255, 255, 9, 159, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0)
+}, {
+"aabb": AABB(-20, 0.001999, 0, 40, 19.998001, 39.998),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Red",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 0, 0, 27, 173, 255, 255, 255, 255, 0, 0, 27, 173, 2, 128, 0, 0, 255, 255, 27, 173, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}, {
+"aabb": AABB(-20, -20, 0, 40, 40, 1e-05),
+"format": 34896613383,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"material": SubResource("StandardMaterial3D_73a8k"),
+"name": "Purple",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 3,
+"vertex_data": PackedByteArray(255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+shadow_mesh = SubResource("ArrayMesh_bg5as")
 
 [node name="MainGame" type="Node3D" unique_id=2007180522]
 
@@ -3379,6 +3509,7 @@ LineMaterial = SubResource("StandardMaterial3D_frf35")
 [node name="TrailContainer" type="Node" parent="LineController" unique_id=935175518]
 
 [node name="Head" type="CharacterBody3D" parent="LineController" unique_id=1649559215 groups=["LineHead"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="LineController/Head" unique_id=771925720]
 shape = SubResource("BoxShape3D_frf35")
@@ -3394,11 +3525,65 @@ script = ExtResource("3_kvfik")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -303, 0, -350)
 Position = Vector3(1, 1, 0)
 Distance = 20.0
+CameraDuration = 3.0
+
+[node name="OpenPyramid" parent="ActionBlocks" unique_id=503393180 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1566, 0, -1670)
+BlockType = 4
+Position = Vector3(1, 1, 0)
+
+[node name="OpenPyramid2" parent="ActionBlocks" unique_id=402496129 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1514.6, 0, -1624)
+Position = Vector3(0, 0.85, 1)
+Distance = 45.0
+CameraDuration = 3.0
+
+[node name="EndGame" parent="ActionBlocks" unique_id=947317840 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1571, 0, -1684)
+BlockType = 5
+Position = Vector3(1, 1, 0)
 
 [node name="CameraTween2" parent="ActionBlocks" unique_id=728464001 instance=ExtResource("4_3bmkb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -505, 0, -546)
-Position = Vector3(0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -518, 0, -568)
+Position = Vector3(0, 1, 0.2)
+Distance = 20.0
+CameraDuration = 3.0
+
+[node name="CameraTween3" parent="ActionBlocks" unique_id=2087735839 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -721, 0, -787)
+Position = Vector3(-0.5, 0.8, -0.5)
+Distance = 50.0
+CameraDuration = 10.0
+
+[node name="CameraTween4" parent="ActionBlocks" unique_id=1984057527 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -950, 0, -1033)
+Position = Vector3(0.5, 0.8, 0.5)
+Distance = 50.0
+CameraDuration = 3.0
+
+[node name="CameraTween5" parent="ActionBlocks" unique_id=2064952922 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -984, 0, -1079)
+Position = Vector3(1, 0.5, 0)
 Distance = 30.0
+CameraDuration = 3.0
+
+[node name="CameraTween6" parent="ActionBlocks" unique_id=1801510901 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1064, 0, -1153)
+Position = Vector3(0, 0.5, 1)
+Distance = 20.0
+CameraDuration = 3.0
+
+[node name="CameraTween8" parent="ActionBlocks" unique_id=1985523817 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1155, 0, -1251)
+Position = Vector3(0.5, 0.75, 0.5)
+Distance = 25.0
+CameraDuration = 5.0
+
+[node name="CameraTween7" parent="ActionBlocks" unique_id=1585853075 instance=ExtResource("4_3bmkb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1027, 0, -1118)
+Position = Vector3(1, 0.5, 1)
+Distance = 30.0
+CameraDuration = 3.0
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1927240764]
 transform = Transform3D(0.47484425, 0, -0.88006985, 0, 1, 0, 0.88006985, 0, 0.47484425, -8.204276, 3.117916, 0)
@@ -3406,7 +3591,7 @@ script = ExtResource("2_frf35")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1536368120]
 
-[node name="Root" type="Control" parent="UI" unique_id=1541151297]
+[node name="LevelData" type="Control" parent="UI" unique_id=1541151297]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -3415,7 +3600,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ybmw1")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/Root" unique_id=72208122]
+[node name="MarginContainer" type="MarginContainer" parent="UI/LevelData" unique_id=72208122]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3427,36 +3612,24 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="StatsContainer" type="VBoxContainer" parent="UI/Root/MarginContainer" unique_id=942176114]
+[node name="TitleContainer" type="VBoxContainer" parent="UI/LevelData/MarginContainer" unique_id=942176114]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/Root/MarginContainer/StatsContainer" unique_id=819740642]
+[node name="Title" type="Label" parent="UI/LevelData/MarginContainer/TitleContainer" unique_id=819740642]
 layout_mode = 2
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("3_yprpe")
 theme_override_font_sizes/font_size = 70
 text = "Caffeine Rush"
 horizontal_alignment = 1
 
-[node name="Crowns" type="Label" parent="UI/Root/MarginContainer/StatsContainer" unique_id=602248294]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_yprpe")
-theme_override_font_sizes/font_size = 40
-text = "Crowns: 0/3"
-horizontal_alignment = 1
-
-[node name="Gems" type="Label" parent="UI/Root/MarginContainer/StatsContainer" unique_id=150133647]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_yprpe")
-theme_override_font_sizes/font_size = 40
-text = "Gems: 0/10"
-horizontal_alignment = 1
-
-[node name="PlayLabelContainer" type="VBoxContainer" parent="UI/Root/MarginContainer" unique_id=1273046701]
+[node name="PlayLabelContainer" type="VBoxContainer" parent="UI/LevelData/MarginContainer" unique_id=1273046701]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="UI/Root/MarginContainer/PlayLabelContainer" unique_id=258572897]
+[node name="Label" type="Label" parent="UI/LevelData/MarginContainer/PlayLabelContainer" unique_id=258572897]
 layout_mode = 2
+theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("3_yprpe")
 theme_override_font_sizes/font_size = 70
 text = "Tap to play"
@@ -8216,20 +8389,21 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1570.71, -1, -1730.23)
 
 [node name="@MeshInstance3D@37895" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart474" unique_id=1734469894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -58.160034)
 mesh = SubResource("BoxMesh_rusf6")
 
 [node name="@CollisionShape3D@37896" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart474" unique_id=1504444017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -58.160034)
 shape = SubResource("BoxShape3D_rw63d")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="TrackPart475" type="StaticBody3D" parent="LevelTrack/MeshHolder" unique_id=558955729]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1574.375, -1, -1784.07)
-
-[node name="@MeshInstance3D@37897" type="MeshInstance3D" parent="LevelTrack/MeshHolder/TrackPart475" unique_id=21044472]
-mesh = SubResource("BoxMesh_4dkp5")
-
-[node name="@CollisionShape3D@37898" type="CollisionShape3D" parent="LevelTrack/MeshHolder/TrackPart475" unique_id=646706257]
-shape = SubResource("BoxShape3D_rw81w")
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=102689376]
+stream = ExtResource("10_48eim")
+
+[node name="Pyramid1" type="MeshInstance3D" parent="." unique_id=556342594]
+transform = Transform3D(-6.097468e-08, -6.097468e-08, 1.5084338, -1.394938, 1.394938, 0, -1.394938, -1.394938, -6.593574e-08, -1570.7, -2, -1743)
+mesh = SubResource("ArrayMesh_3bmkb")
+
+[node name="Pyramid2" type="MeshInstance3D" parent="." unique_id=1111816557]
+transform = Transform3D(1.82924e-07, 1.82924e-07, -1.5084338, -1.394938, 1.394938, 0, 1.394938, 1.394938, 1.9780722e-07, -1570.7, -2, -1743)
+mesh = SubResource("ArrayMesh_3bmkb")

@@ -1,7 +1,7 @@
 class_name ActionBlock
 extends Area3D
 
-@export_enum("CameraTween", "JumpPad", "LineColor") var BlockType: int = 0
+@export_enum("CameraTween", "JumpPad", "LineColor", "Death", "OpenPyramid", "EndGame") var BlockType: int = 0
 
 @export var Position: Vector3 = Vector3.ZERO
 @export var Distance: float = 0

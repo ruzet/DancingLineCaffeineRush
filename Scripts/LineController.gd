@@ -7,19 +7,22 @@ extends Node3D
 
 @onready var Head: CharacterBody3D = $"Head"
 @onready var TrailContainer: Node = $"TrailContainer"
+@onready var LevelTrack: Path3D = $"../LevelTrack"
 @onready var AudioPlayer: AudioStreamPlayer = $"../AudioStreamPlayer"
-@onready var UI: Control = $"../UI/Root"
+@onready var UI: Control = $"../UI/LevelData"
 
 var MainDirection = Vector3.FORWARD
 var CurrentDirection = Vector3.FORWARD
 var TurnStartPosition: Vector3
 var CurrentSegment: MeshInstance3D
 var RecordedCurve: Curve3D
+var SpawnPoint = 300
 var LeftTurn = true
 var Turned = false
 var CanTurn = true
 var Moving = false
 var Grounded = false
+var DebugMode = true
 
 func _physics_process(Delta: float) -> void:
 	Head.find_child("Mesh").material_override = LineMaterial
@@ -36,7 +39,7 @@ func _physics_process(Delta: float) -> void:
 		else:
 			_UpdateCurrentSegment()
 	else:
-		if !RecordPath: Head.velocity.y -= Gravity * Delta
+		if !RecordPath && !DebugMode: Head.velocity.y -= Gravity * Delta
 	Head.move_and_slide()
 	
 func _input(Event: InputEvent) -> void: 
@@ -50,7 +53,14 @@ func _input(Event: InputEvent) -> void:
 	elif Event.is_action_pressed("ui_text_newline") && RecordPath:
 		_SaveRecordedPath()
 			
-func _ready() -> void: AudioPlayer.stream = preload("res://Assets/caffeinerush.wav")
+func _ready() -> void:
+	if SpawnPoint > 0: 
+		self.position = LevelTrack.curve.get_point_position(SpawnPoint)
+		self.position.y -= 0.5
+		Turned = false if SpawnPoint % 2 == 0 else true
+		if Turned: CurrentDirection = CurrentDirection.rotated(Vector3.UP, deg_to_rad(-90 if LeftTurn else 90))
+			
+	AudioPlayer.stream = preload("res://Assets/caffeinerush.wav")
 
 func Ready():
 	AudioPlayer.play()
@@ -66,7 +76,7 @@ func Landed():
 	_SpawnNewSegment()
 
 func Turn():
-	if !RecordPath: if !CanTurn || !Moving || !Head.is_on_floor(): return
+	if !RecordPath && !DebugMode: if !CanTurn || !Moving || !Head.is_on_floor(): return
 	_UpdateCurrentSegment()
 	TurnStartPosition = Head.global_position
 	if !Turned:

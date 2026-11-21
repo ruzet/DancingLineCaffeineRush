@@ -5,8 +5,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_22axp"]
 size = Vector3(25, 25, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu7j2"]
+transparency = 1
+albedo_color = Color(6.738305e-07, 0.60140234, 0.6048388, 0.5882353)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rq3qu"]
+material = SubResource("StandardMaterial3D_pu7j2")
+size = Vector3(25, 25, 0.1)
+
 [node name="ActionBlock" type="Area3D" unique_id=1833236039 groups=["ActionBlock"]]
 script = ExtResource("1_pu7j2")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1024795901]
 shape = SubResource("BoxShape3D_22axp")
+debug_fill = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=332820516]
+mesh = SubResource("BoxMesh_rq3qu")

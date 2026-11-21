@@ -1,6 +1,5 @@
 extends Control
 
-@onready var StatsContainer = $MarginContainer/StatsContainer
 @export var Ready = false
 
 func HideUI():
