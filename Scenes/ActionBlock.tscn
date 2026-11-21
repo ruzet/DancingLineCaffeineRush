@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d3lhxijfj4feo"]
+
+[ext_resource type="Script" uid="uid://d3vwhc6xr6lmp" path="res://Scripts/ActionBlock.gd" id="1_pu7j2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22axp"]
+size = Vector3(25, 25, 0.1)
+
+[node name="ActionBlock" type="Area3D" unique_id=1833236039 groups=["ActionBlock"]]
+script = ExtResource("1_pu7j2")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1024795901]
+shape = SubResource("BoxShape3D_22axp")
