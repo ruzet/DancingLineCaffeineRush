@@ -23,7 +23,6 @@ func _UpdatePositions():
 			for j in range(i + 1, TrackParts.size()): if TrackParts[j]: TrackParts[j].global_position += MovementDelta
 			for k in range(TrackParts.size()): if TrackParts[k]: OldPositions[k] = TrackParts[k].global_position
 			break
-	print("checking for part")
 
 func _GatherAllParts():
 	TrackParts.clear()

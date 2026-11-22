@@ -1,7 +1,8 @@
 extends Node3D
 
-@export var LineSpeed = 20
-@export var Gravity = 10
+@export var LineSpeed = 20.0
+@export var Gravity = 20.0
+@export var Speed = 1.0
 @export var RecordPath = false
 @export var LineMaterial: StandardMaterial3D
 
@@ -17,7 +18,7 @@ var CurrentDirection = Vector3.FORWARD
 var TurnStartPosition
 var CurrentSegment: MeshInstance3D
 var RecordedCurve: Curve3D
-var SpawnPoint = 80
+var SpawnPoint = 0
 var LeftTurn = true
 var Turned = false
 var CanTurn = true
@@ -26,11 +27,12 @@ var Grounded = false
 var DebugMode = false
 
 func _physics_process(Delta: float) -> void:
+	var ScaledDelta = Delta * Speed
 	Head.find_child("Mesh").material_override = LineMaterial
-	self.get_parent().find_child("ActionBlocks").find_child("Death").global_position = Vector3(Head.global_position.x, -5, Head.global_position.z)
+	get_parent().find_child("ActionBlocks").find_child("Death").global_position = Vector3(Head.global_position.x, -55, Head.global_position.z)
 	if !Moving: return
-	Head.global_position += CurrentDirection * LineSpeed * Delta
-
+	AudioPlayer.pitch_scale = Speed
+	Head.global_position += CurrentDirection * LineSpeed * ScaledDelta
 	if !Grounded && Head.is_on_floor(): Landed()
 	Grounded = Head.is_on_floor()
 	
@@ -41,7 +43,7 @@ func _physics_process(Delta: float) -> void:
 		else:
 			_UpdateCurrentSegment()
 	else:
-		if !RecordPath && !DebugMode: Head.velocity.y -= Gravity * Delta
+		if !RecordPath && !DebugMode: Head.velocity.y -= Gravity * (Speed * Speed) * Delta
 	Head.move_and_slide()
 	
 func _input(Event: InputEvent) -> void: 
@@ -94,6 +96,8 @@ func Reset():
 	for RunningTween in get_tree().get_processed_tweens():
 		if RunningTween.is_valid() && RunningTween.is_running():
 			RunningTween.kill()
+
+	LineMaterial.albedo_color = Color("#6acaf5")
 
 	Camera.Position = Vector3(0.5, 0.75, 0.5)
 	Camera.Distance = 20

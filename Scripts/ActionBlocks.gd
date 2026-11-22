@@ -44,8 +44,8 @@ func _OpenPyramid():
 	NewTween.set_ease(Tween.EASE_OUT)
 	NewTween.set_parallel(true)
 
-	NewTween.tween_property(Pyramid1, "position", Vector3(-1567.7, -2.0, -1743.0), 3)
-	NewTween.tween_property(Pyramid2, "position", Vector3(-1573.7, -2.0, -1743.0), 3)
+	NewTween.tween_property(Pyramid1, "position", Vector3(-1567.7, -53.0, -1743.0), 3)
+	NewTween.tween_property(Pyramid2, "position", Vector3(-1573.7, -53.0, -1743.0), 3)
 	NewTween.play()
 
 	Camera.Following = false
