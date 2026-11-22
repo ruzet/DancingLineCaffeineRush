@@ -27,7 +27,7 @@ adjustment_enabled = true
 adjustment_saturation = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frf35"]
-albedo_color = Color(0.416, 0.792, 0.961, 1)
+albedo_color = Color(0.41568628, 0.7921569, 0.9607843, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_frf35"]
 
