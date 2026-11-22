@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var LineController: Node3D = $"../LineController"
 @onready var Camera: Camera3D = $"../Camera"
 
 func _ready() -> void:
@@ -17,22 +18,22 @@ func _OnBlockTouched(Head: Node, Block: ActionBlock):
 		elif Block.BlockType == 1: # Jump Pad
 			Head.velocity.y = Block.JumpPower
 		elif Block.BlockType == 2: # Line Color
-			_LineColorChange(Head, Block.LineColor, Block.ColorDuration)
+			_LineColorChange(Block.LineColor, Block.ColorDuration)
 		elif Block.BlockType == 3: # Death
 			Head.get_parent().Reset()
 		elif Block.BlockType == 4: # Open Pyramid:
 			_OpenPyramid()
 		elif Block.BlockType == 5: # End Game:
-			_EndGame(Head)
+			_EndGame()
 
 
 
-func _LineColorChange(Head: CharacterBody3D, NewColor: Color, Duration: float):
-	var LineController = Head.get_parent()
+func _LineColorChange(NewColor: Color, Duration: float):
 	var LineMaterial = LineController.LineMaterial
 	var NewTween = create_tween()
 	NewTween.set_trans(Tween.TRANS_LINEAR)
 
+	Duration *= LineController.Speed
 	NewTween.tween_property(LineMaterial, "albedo_color", NewColor, Duration)
 	NewTween.play()
 
@@ -44,12 +45,10 @@ func _OpenPyramid():
 	NewTween.set_ease(Tween.EASE_OUT)
 	NewTween.set_parallel(true)
 
-	NewTween.tween_property(Pyramid1, "position", Vector3(-1567.7, -53.0, -1743.0), 3)
-	NewTween.tween_property(Pyramid2, "position", Vector3(-1573.7, -53.0, -1743.0), 3)
+	NewTween.tween_property(Pyramid1, "position", Vector3(-1567.7, -53.0, -1743.0), 3 * LineController.Speed)
+	NewTween.tween_property(Pyramid2, "position", Vector3(-1573.7, -53.0, -1743.0), 3 * LineController.Speed)
 	NewTween.play()
 
 	Camera.Following = false
 
-func _EndGame(Head: CharacterBody3D):
-	var LineController = Head.get_parent()
-	LineController.CanTurn = false
+func _EndGame(): LineController.CanTurn = false

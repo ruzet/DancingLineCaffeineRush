@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d3lhxijfj4feo" path="res://Scenes/ActionBlock.tscn" id="4_3bmkb"]
 [ext_resource type="Curve3D" uid="uid://bbyri576cp0ua" path="res://Assets/RecordedCurve.tres" id="5_321ql"]
 [ext_resource type="Script" uid="uid://bwpn5d2jpx1tw" path="res://Scripts/CreateTrack.gd" id="6_d4f28"]
-[ext_resource type="Script" uid="uid://b88kemxt2cmv" path="res://Scripts/ControlMain.gd" id="8_q8sds"]
+[ext_resource type="Script" uid="uid://b88kemxt2cmv" path="res://Scripts/ControlMenu.gd" id="8_q8sds"]
+[ext_resource type="Theme" uid="uid://b48htcmc6td4h" path="res://Assets/UITheme.tres" id="8_yr2pg"]
 [ext_resource type="AudioStream" uid="uid://b3xh13e7f7m7u" path="res://Assets/caffeinerush.wav" id="10_48eim"]
 [ext_resource type="Script" uid="uid://dyoahw1alqjfy" path="res://Scripts/MeshHolder.gd" id="10_73a8k"]
 
@@ -3690,10 +3691,12 @@ text = "Tap to play"
 horizontal_alignment = 1
 
 [node name="ControlMenu" type="Control" parent="UI" unique_id=1143369410]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 266.0
 offset_bottom = 289.0
+theme = ExtResource("8_yr2pg")
 script = ExtResource("8_q8sds")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/ControlMenu" unique_id=1185974173]
@@ -3703,6 +3706,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_yr2pg")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -3710,6 +3714,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Panel" type="Panel" parent="UI/ControlMenu/MarginContainer" unique_id=858845140]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ControlMenu/MarginContainer/Panel" unique_id=1071849733]
 layout_mode = 1
@@ -3718,49 +3723,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("8_yr2pg")
+theme_override_constants/separation = 8
+alignment = 1
 
 [node name="Title" type="Label" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer" unique_id=592576121]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 theme_override_font_sizes/font_size = 30
 text = "Control Menu"
 horizontal_alignment = 1
 
 [node name="ButtonContainer" type="MarginContainer" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer" unique_id=24307701]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="SpeedContainer" type="VBoxContainer" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer" unique_id=2009453272]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="UltraSlow" type="Button" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=721571491]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 text = "Ultra Slow"
 
 [node name="Slow" type="Button" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=406936014]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 text = "Slow"
 
 [node name="Normal" type="Button" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=1145420667]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 text = "Normal"
 
 [node name="Fast" type="Button" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=272954914]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 text = "Fast"
-
-[node name="Speed" type="Label" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=390459185]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Speed: 1.00x"
-horizontal_alignment = 1
 
 [node name="Reset" type="Button" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=757045554]
 layout_mode = 2
+theme = ExtResource("8_yr2pg")
 text = "Reset Level"
+
+[node name="Speed" type="Label" parent="UI/ControlMenu/MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer" unique_id=390459185]
+layout_mode = 2
+theme = ExtResource("8_yr2pg")
+theme_override_font_sizes/font_size = 25
+text = "Speed: 1.0x"
+horizontal_alignment = 1
 
 [node name="LevelTrack" type="Path3D" parent="." unique_id=1442548719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2350695, 0)

@@ -3,6 +3,8 @@ extends Control
 @onready var SpeedContainer: VBoxContainer = $"MarginContainer/Panel/VBoxContainer/ButtonContainer/SpeedContainer"
 @onready var LineController: Node3D = $"../../LineController"
 
+func _input(Event: InputEvent) -> void: if Event.is_action_pressed("Control Menu"): visible = !visible
+
 func _ready() -> void:
 	SpeedContainer.find_child("UltraSlow").pressed.connect(_SetSpeed.bind(0.5))
 	SpeedContainer.find_child("Slow").pressed.connect(_SetSpeed.bind(0.75))
